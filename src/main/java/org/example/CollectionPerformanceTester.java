@@ -37,4 +37,19 @@ public class CollectionPerformanceTester {
         }
         return totalElapsedTime / numIterations / numElements;
     }
+
+    public double testGet(int numElements, int numIterations) {
+        for (int i = 0; i < numElements; i++) {
+            list.add(i);
+        }
+        double totalElapsedTime = 0;
+        for (int j = 0; j < numIterations; j++) {
+            long startTime = System.currentTimeMillis();
+            for (int i = 0; i < numElements; i++) {
+                int element = list.get(i);
+            }
+            totalElapsedTime += (System.currentTimeMillis() - startTime);
+        }
+        return totalElapsedTime / numIterations / numElements;
+    }
 }
