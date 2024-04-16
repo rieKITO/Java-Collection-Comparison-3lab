@@ -11,9 +11,8 @@ public class CollectionPerformanceTester {
 
     public long testAdd(int numElements) {
         long startTime = System.nanoTime();
-        for (int i = 0; i < numElements; i++) {
+        for (int i = 0; i < numElements; i++)
             list.add(i);
-        }
         long elapsedTime = (System.nanoTime() - startTime) / numElements;
         list.clear();
         return elapsedTime;
