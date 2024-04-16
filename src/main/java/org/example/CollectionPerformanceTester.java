@@ -19,15 +19,15 @@ public class CollectionPerformanceTester {
             totalElapsedTime += (System.currentTimeMillis() - startTime);
             list.clear();
         }
-        return totalElapsedTime / numIterations / numElements;
+        return totalElapsedTime;
     }
 
     public double testDelete(int numElements, int numIterations) {
-        for (int i = 0; i < numElements; i++) {
-            list.add(i);
-        }
         double totalElapsedTime = 0;
         for (int j = 0; j < numIterations; j++) {
+            for (int i = 0; i < numElements; i++) {
+                list.add(i);
+            }
             long startTime = System.currentTimeMillis();
             while (!list.isEmpty()) {
                 list.remove(0);
@@ -35,7 +35,7 @@ public class CollectionPerformanceTester {
             totalElapsedTime += (System.currentTimeMillis() - startTime);
             list.clear();
         }
-        return totalElapsedTime / numIterations / numElements;
+        return totalElapsedTime;
     }
 
     public double testGet(int numElements, int numIterations) {
@@ -50,6 +50,6 @@ public class CollectionPerformanceTester {
             }
             totalElapsedTime += (System.currentTimeMillis() - startTime);
         }
-        return totalElapsedTime / numIterations / numElements;
+        return totalElapsedTime;
     }
 }
