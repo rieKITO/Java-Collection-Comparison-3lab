@@ -9,31 +9,30 @@ public class CollectionPerformanceTester {
         this.list = list;
     }
 
-    public long testAdd(int numElements, int numIterations) {
-        long totalElapsedTime = 0;
+    public double testAdd(int numElements, int numIterations) {
+        double totalElapsedTime = 0;
         for (int j = 0; j < numIterations; j++) {
-            long startTime = System.nanoTime();
+            long startTime = System.currentTimeMillis();
             for (int i = 0; i < numElements; i++) {
                 list.add(i);
             }
-            totalElapsedTime += (System.nanoTime() - startTime);
+            totalElapsedTime += (System.currentTimeMillis() - startTime);
             list.clear();
         }
         return totalElapsedTime / numIterations / numElements;
     }
 
-    public long testDelete(int numElements, int numIterations) {
+    public double testDelete(int numElements, int numIterations) {
         for (int i = 0; i < numElements; i++) {
             list.add(i);
         }
-
-        long totalElapsedTime = 0;
+        double totalElapsedTime = 0;
         for (int j = 0; j < numIterations; j++) {
-            long startTime = System.nanoTime();
+            long startTime = System.currentTimeMillis();
             while (!list.isEmpty()) {
                 list.remove(0);
             }
-            totalElapsedTime += (System.nanoTime() - startTime);
+            totalElapsedTime += (System.currentTimeMillis() - startTime);
             list.clear();
         }
         return totalElapsedTime / numIterations / numElements;
